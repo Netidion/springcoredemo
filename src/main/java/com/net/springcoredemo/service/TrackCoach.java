@@ -1,11 +1,9 @@
 package com.net.springcoredemo.service;
 
 import com.net.util.Coach;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy
 public class TrackCoach implements Coach {
 
     public TrackCoach() {
