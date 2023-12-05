@@ -1,4 +1,4 @@
-package com.net.springcoredemo.service;
+package com.net.util;
 
 public interface Coach {
 
