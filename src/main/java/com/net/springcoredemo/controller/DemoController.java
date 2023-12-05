@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DemoController {
-    /* Define a private field for the dependency */
+    /* Define a private field for the dependency
+    * Default Bean Scope is Singleton, meaning the objects created are references to the same bean,
+    */
     private Coach myCoach;
-
-    private Coach anotherCoach;
 
     /**
      * Define constructor injection
@@ -20,23 +20,9 @@ public class DemoController {
      * Qualifier has higher priority than Primary
      */
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach,
-                          @Qualifier("cricketCoach") Coach theOtherCoach){
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
         System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = theCoach;
-        anotherCoach = theOtherCoach;
-    }
-
-    /**
-     * Default Bean Scope is Singleton, meaning the objects created are references to the same bean,
-     * hence myCoach == anotherCoach => true
-     * With Scope Prototype annotation the objects created are different
-     * hence myCoach == anotherCoach => false
-     */
-
-    @GetMapping("/check")
-    public String checkBeans() {
-        return "Comparing Beans: myCoach == anotherCoach, " + (myCoach == anotherCoach);
     }
 
     @GetMapping("/daily-workout")
