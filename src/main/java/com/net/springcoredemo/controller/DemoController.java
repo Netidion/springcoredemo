@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
     // Define a private field for the dependency
-    private Coach myCoach;
-
-    // Define setter for dependency injection
-    // the name of the method could be anything you like
+    // No need to define constructor or setter injection
+    // Not recommended by spring.oi team since it makes the code harder to unit test.
     @Autowired
-    public void setCoach(Coach theCoach) {
-        myCoach = theCoach;
-    }
+    private Coach myCoach;
 
     @GetMapping("/daily-workout")
     public String getDailyWorkout(){
